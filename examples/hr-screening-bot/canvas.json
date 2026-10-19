@@ -1,0 +1,33 @@
+{
+  "title": "HR screening bot — AI CV reading",
+  "subtitle": "AI Product & System Canvas · 2026-10-19 · built with the wizard",
+  "lang": "en",
+  "verdict": {"label": "GO → offline MVP experiment", "kind": "go",
+              "summary": "AI costs ~$0.0003–0.0009 per CV vs ~$1.00 of HR time, so economics are not the issue. Candidate screening is a high-risk use under the EU AI Act: run the offline bake-off now, and put the compliance baseline in place before Shadow on real candidates."},
+  "key_numbers": ["100–250 responses per vacancy/month", "manual CV read ≈ $1.00 → AI ≈ $0.0003–0.0009", "AI tier +$100/client/month", "risk: false ✗ → unfair rejection"],
+  "pattern": "Structured output — per-criterion extraction with verbatim quotes; bucket computed by code",
+  "components": {
+    "1": {"text": "2 clients × 5 vacancies × 100–250 responses/month; HR spends ~5 min per response (3 on the CV) — 40–100 h/month per client; volume set to grow 5–10×. Lever: revenue growth.", "status": "fact"},
+    "2": {"text": "Primary: ≥40% of next 10–20 clients pay for the AI tier. Leading: HR time ≤2 min/response (from 5). Stop: after 6 weeks <40% time saved or HR opens ≥80% of CVs.", "status": "fact"},
+    "3": {"text": "In-house HRs (SMB, IT hiring) without an expensive ATS: a CV check against must-haves with quotes instead of reading every CV — ~3 min saved per response. Manager pays.", "status": "fact"},
+    "4": {"text": "One-time: build 30–40 h × $30, compliance baseline. Ongoing: inference <$35/month at 25K CVs, audits. Unit ≤$0.01/CV. AI tier +$100; payback ~2–6 months.", "status": "assumption"},
+    "5": {"text": "1 client, highest-volume vacancy, free 6-week pilot → both clients → new clients after gates. Gates: ≤2 min/response, pilot converts to paid, quality holds.", "status": "fact"},
+    "6": {"text": "\"AI CV check\" block in the existing candidate card: ✓/✗/? per must-have with a CV quote, 2-line summary, \"AI suggestion\" label. Added by a batch every 4 h.", "status": "fact"},
+    "7": {"text": "Extract text → strip protected attributes → one LLM call per CV → code verifies quotes and computes the bucket. HR-written criteria only. Risks: false ✗, misread facts, prompt injection.", "status": "fact"},
+    "8": {"text": "Quality: per-criterion accuracy ≥90%, false-contradicted ≤3%, 100% valid quotes, reject agreement ≥95%, EN/DE/ES gap ≤5 pp. Performance: within one 4 h batch, ≥99% valid outputs.", "status": "fact"},
+    "9": {"text": "Golden set ~120 CVs (past + synthetic DE/ES). Shadow 2 weeks / 150 responses → Assist. No Auto: AI never decides. Back to Shadow if false ✗ >3% in a weekly sample.", "status": "fact"},
+    "10": {"text": "Invite / Reject (two taps), Open CV, Flag AI error. \"AI suggestion — decision is yours\", \"AI check pending\". Candidate notice at /start + human-only review. 3-month retention.", "status": "fact"},
+    "11": {"text": "Where does extracted CV text live (today: Telegram file id), and how does the 3-month deletion run?", "status": "open"},
+    "12": {"text": "How does the golden-set eval rerun on every prompt/model change; is the model+prompt version logged per card?", "status": "open"},
+    "13": {"text": "Batch API vs scheduled job; EU-region zero-retention provider (Token Factory or pinned gateway)?", "status": "open"},
+    "14": {"text": "How does a new prompt version reach one vacancy before all (canary by vacancy)?", "status": "open"},
+    "15": {"text": "Alerts on false-✗ rate, Flag-AI-error spikes and batch failures; decision logs kept for audit.", "status": "open"}
+  },
+  "next_step": "Offline bake-off on ~120 labelled CVs (EN/DE/ES): frontier bar vs Gemini 2.5 Flash vs gpt-oss-120b vs a larger multilingual open model. Then the compliance baseline (DPA, DPIA, candidate notice, logging) before Shadow.",
+  "hypotheses": [
+    {"name": "H1 Quality", "metric": "Per-criterion status accuracy; language gap", "threshold": "≥90%; ≤5 pp"},
+    {"name": "H2 Safety", "metric": "False-contradicted rate; invalid quotes shown", "threshold": "≤3%; 0"},
+    {"name": "H3 Economics", "metric": "AI cost per CV", "threshold": "≤ $0.01"},
+    {"name": "H4 Speed", "metric": "Batch of 250 CVs; valid outputs", "threshold": "< 30 min; ≥99%"}
+  ]
+}

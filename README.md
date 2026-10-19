@@ -7,7 +7,7 @@ Give it an idea ("our CTO wants an AI agent for the IT helpdesk"), a migration q
 - a **document**: verdict (GO → MVP experiment / REFRAME / NO-GO), Canvas components 1–10, architecture pattern, inference economics, model and deployment choice, MVP hypotheses H1–H4, risks and compliance, gate review, and questions for engineers;
 - a **visual Canvas board** (HTML) in the course layout — WHY / WHAT / HOW blocks with a *fact / assumption / open* status on each.
 
-![Example Canvas board](examples/support-triage-canvas.png)
+![Example Canvas board — HR screening bot](examples/hr-screening-bot/canvas.png)
 
 ## How it works
 
@@ -43,7 +43,10 @@ skills/ai-initiative-canvas/
 └── assets/
     ├── canvas_template.md           # document structure
     └── example_canvas.json          # board JSON schema + example
-examples/                            # rendered boards and a sample output document
+examples/
+├── hr-screening-bot/                # real wizard run: AI CV reading for a Telegram HR bot (doc + board)
+├── meeting-summaries-migration/     # Full mode: moving summaries from GPT-4o to open models
+└── support-triage-canvas.*          # board for the fictional reference case
 ```
 
 ## Install
