@@ -1,0 +1,102 @@
+{
+  "title": "Call recaps — open models on Token Factory?",
+  "subtitle": "AI Initiative Canvas · 2026-10-19 · unattended run, assumptions labelled",
+  "lang": "en",
+  "verdict": {
+    "label": "REFRAME → GO on a 1–2-week bake-off",
+    "kind": "reframe",
+    "summary": "As a cost move the LLM switch saves ~$60/month (~3% of MRR); transcription costs ~3–9× more and stays with AssemblyAI. Test non-inferiority on a 60-call golden set; migrate only if an open model matches GPT-4o on action items; park fine-tuning."
+  },
+  "key_numbers": [
+    "revenue ~$1,800/mo ≈ $0.90 per call",
+    "GPT-4o ≈ $65/mo → gpt-oss-120b ≈ $4/mo",
+    "transcription ≈ $225–555/mo [assumption]",
+    "risk: invented / misattributed action items"
+  ],
+  "pattern": "Content generation with structured (JSON) action items: not RAG, not agentic",
+  "components": {
+    "1": {
+      "text": "~1,500 audio h/month (~2,000 calls) from ~120 teams at a flat $15. COGS ~$2.4–5.2 per subscriber, mostly transcription. Lever: cost reduction (weak: ~$60/mo on the LLM step).",
+      "status": "assumption"
+    },
+    "2": {
+      "text": "Primary: AI COGS ≤ $3.75 per subscriber; churn ≤ baseline. Secondary: summary tickets ≤ baseline. Stop: no candidate passes H1–H2 by week 2 → stay on GPT-4o.",
+      "status": "assumption"
+    },
+    "3": {
+      "text": "For small-team members leaving a call with scattered commitments: a trusted recap and action list with owner and date, better than manual notes or re-listening.",
+      "status": "assumption"
+    },
+    "4": {
+      "text": "One-time 3–6 dev-days; transcription $225–555/mo + LLM $65/mo. Unit: COGS per subscriber. Breakpoint: users >18–39 h/mo. ROI: saves ~$600–720/yr, payback ~1.7–3.7 yrs.",
+      "status": "assumption"
+    },
+    "5": {
+      "text": "Own team → 5–10 opt-in beta users → 20% canary → all. Gates: thumbs-up and edit rate within 5 pp of GPT-4o; no rise in summary tickets.",
+      "status": "assumption"
+    },
+    "6": {
+      "text": "The existing product, unchanged: after each recorded call the team gets a summary and action items (owner, due date). Only the engine behind it changes.",
+      "status": "fact"
+    },
+    "7": {
+      "text": "Transcript → one generation pass → summary + JSON action items. Prompt-tuned open model → LoRA only for a proven failure mode with consented data. Risks: invented owner/date, missed commitments.",
+      "status": "assumption"
+    },
+    "8": {
+      "text": "Action-item recall ≥90%, precision ≥85%; summary ≥ GPT-4o in ≥80% of blind pairs. p95 ≤60 s per 1 h call; valid JSON ≥99%.",
+      "status": "assumption"
+    },
+    "9": {
+      "text": "Offline: 60-call golden set. Live: shadow on real calls → canary with GPT-4o one flag away. Roll back if edit or thumbs-down rate is +5 pp for a week.",
+      "status": "assumption"
+    },
+    "10": {
+      "text": "Review / Edit / Reassign / Jump to transcript / Regenerate. AI label, timestamp evidence, 'owner unclear' flags. Transcript only, zero-retention, opt-in training.",
+      "status": "assumption"
+    },
+    "11": {
+      "text": "Where are transcripts stored and for how long? Can we replay them for evals within the retention policy?",
+      "status": "open"
+    },
+    "12": {
+      "text": "What runs the 60-call golden set on every prompt or model change, and where are results versioned?",
+      "status": "open"
+    },
+    "13": {
+      "text": "One provider abstraction (OpenAI SDK + base_url) so a model swap is a config change? Who owns it?",
+      "status": "open"
+    },
+    "14": {
+      "text": "Feature flag and per-user routing GPT-4o ↔ open model; fallback on timeout or invalid JSON?",
+      "status": "open"
+    },
+    "15": {
+      "text": "Alerts on JSON failures, p95, cost per call, thumbs-down rate. Who responds?",
+      "status": "open"
+    }
+  },
+  "next_step": "Offline bake-off: GPT-4o vs gpt-oss-120b, a 70B+ open model, Nemotron-Lightning and GPT-4o-mini (control) on 60 labelled calls (30 opt-in + 30 AMI/ICSI); action items + summary from existing transcripts.",
+  "hypotheses": [
+    {
+      "name": "H1 Quality",
+      "metric": "Action-item recall / precision; blind pairwise vs GPT-4o",
+      "threshold": "≥90% / ≥85%; ≥80% as good or better"
+    },
+    {
+      "name": "H2 Safety",
+      "metric": "Unsupported action items (owner/date/commitment not in transcript)",
+      "threshold": "≤3% and ≤ GPT-4o"
+    },
+    {
+      "name": "H3 Economics",
+      "metric": "LLM cost per call",
+      "threshold": "≤ $0.01 (≤ $20/month)"
+    },
+    {
+      "name": "H4 Speed",
+      "metric": "p95 for a 1 h call; valid JSON",
+      "threshold": "≤ 60 s; ≥ 99%"
+    }
+  ]
+}

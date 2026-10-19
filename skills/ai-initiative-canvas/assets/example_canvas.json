@@ -1,0 +1,33 @@
+{
+  "title": "Candlekeep — AI support assistant",
+  "subtitle": "AI Product & System Canvas · course reference case",
+  "lang": "en",
+  "verdict": {"label": "GO → MVP experiment", "kind": "go",
+              "summary": "Problem and lever are clear; inference is pennies against $4.10 per message. Test routing with confidence first, on a 100-request golden dataset."},
+  "key_numbers": ["$978K/yr ≈ $4.10 per message", "FRT 4 h → target ≤30 min", "inference ≈ $2–5/month", "risk: confidently wrong drafts"],
+  "pattern": "Composition: Structured output + Content generation + RAG (only when policy is needed)",
+  "components": {
+    "1": {"text": "20,000 messages/month sorted and answered manually by 10 FTEs: ~$978K/yr, first response ~4 h. Constraint: assist-only first.", "status": "fact"},
+    "2": {"text": "Primary: FRT ≤30 min. Secondary: escalation rate ≤ baseline. Timeframe: 12 weeks. Stop: if cost per request > $4.10, pause and rescope.", "status": "fact"},
+    "3": {"text": "Customers: a fast personalized reply instead of a 4 h wait. Specialists: less manual sorting, more time for complex cases.", "status": "fact"},
+    "4": {"text": "One-time: integration and workflow. Ongoing: serving + human review + monitoring. Unit: $/message ≤ half of $4.10. Payback 12–18 months.", "status": "assumption"},
+    "5": {"text": "2–3 experienced specialists → whole support team → customer-visible scope. Gates: ≥70% of pilot use suggestions, quality thresholds hold.", "status": "fact"},
+    "6": {"text": "Specialist workspace: on each new message — category, route and reply draft before the specialist answers.", "status": "fact"},
+    "7": {"text": "Classify → route → retrieve policy if needed → draft. Off-the-shelf LLM → own classifier if required. Risks: misroute, confidently wrong draft.", "status": "fact"},
+    "8": {"text": "Quality: misroute ≤10%, draft acceptance ≥60%. Performance: routing fast enough to improve FRT.", "status": "fact"},
+    "9": {"text": "Offline: golden set of 100 + human review of edge cases. Live: shadow → assist. Expand by category. Roll back if below the bar.", "status": "fact"},
+    "10": {"text": "Review / Approve / Edit / Escalate. AI-generated label, low-confidence flag, no auto-send. Only the customer data the task needs.", "status": "fact"},
+    "11": {"text": "Where do return policies live and how often are they updated?", "status": "open"},
+    "12": {"text": "What runs the golden-set eval on every prompt/model change?", "status": "open"},
+    "13": {"text": "API (Token Factory) to start; who on the team owns the integration?", "status": "open"},
+    "14": {"text": "How do we ship new prompt versions: canary by category?", "status": "open"},
+    "15": {"text": "Alerts on rising misroute and latency; who is on call?", "status": "open"}
+  },
+  "next_step": "Offline experiment: routing only (category + department + confidence → JSON) on a golden dataset of 100 labelled requests.",
+  "hypotheses": [
+    {"name": "H1 Quality", "metric": "Department accuracy", "threshold": "≥85%"},
+    {"name": "H2 Safety", "metric": "Unsafe auto-route rate", "threshold": "≤3%"},
+    {"name": "H3 Economics", "metric": "Inference at 20K messages", "threshold": "< $1,000/month"},
+    {"name": "H4 Speed", "metric": "p95 latency", "threshold": "< 5,000 ms"}
+  ]
+}
