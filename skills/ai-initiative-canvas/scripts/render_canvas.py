@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a visual AI Product & System Canvas (Nebius AI Leader layout) as a
+"""Render a visual AI Product & System Canvas (Nebius Academy Canvas layout) as a
 self-contained HTML page.
 
 Usage:

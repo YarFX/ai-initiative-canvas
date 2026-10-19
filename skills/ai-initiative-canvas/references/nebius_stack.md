@@ -31,9 +31,9 @@ Nebius's phrasing: "Token Factory helps agents reason, while Tavily helps them k
 
 | Model | Where | Input | Output | Comment |
 |---|---|---|---|---|
-| openai/gpt-oss-120b | Token Factory | 0.15 | 0.60 | Winner of the course's routing comparison: best quality/safety, p95 ~1.1 s |
+| openai/gpt-oss-120b | Token Factory | 0.15 | 0.60 | Strong quality/cost balance for routing and classification in benchmarks of this method; verify on your data |
 | NVIDIA Nemotron-3.5-Lightning | Token Factory | 0.06 | 0.24 | Ultra-cheap tier for simple tasks |
-| Frontier proprietary (course examples: GPT-6 Astra, Claude Fable 5.1) | First-party API | ~10 | ~50 | Quality bar; expensive for high-volume routine work |
+| Frontier proprietary (e.g. top-tier GPT / Claude / Gemini models) | First-party API | ~10 | ~50 | Quality bar; expensive for high-volume routine work |
 
 Illustrative measurement (support routing, gpt-oss-120b): ~174 input + ~155 output tokens per message → ~$0.00012 per message → ~$2.4/month for 20,000 messages.
 

@@ -31,7 +31,7 @@ A pattern describes **how AI is used in the product**, without choosing a model 
 - The right evolution order is Doctolib's: RAG first, then an agentic layer with a user confirmation gate (pattern 3 → 4).
 - Not every task needs an LLM: regex, if-else, a classic classifier, OCR/Document AI, a moderation classifier or ASR are often cheaper and more reliable. Multimodality is more expensive and slower — use it only when needed.
 
-## Practice mappings (from the course)
+## Practice mappings
 
 | Scenario | Pattern |
 |---|---|

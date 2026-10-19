@@ -1,17 +1,17 @@
 ---
 name: ai-initiative-canvas
-description: Turn an AI idea into a decision-ready AI Product & System Canvas (Nebius AI Leader method) — business problem, metrics with a stop condition, value, cost structure and token economics, architecture pattern, product blueprint, model/deployment choice, MVP hypotheses H1–H4, risks, gate review, a GO / REFRAME / NO-GO verdict, plus a visual Canvas board. When the input is vague or solution-first ("an AI agent that handles everything"), it first runs a step-by-step wizard of clarifying questions per Canvas block instead of guessing. Use whenever someone wants to assess, scope, justify or pitch an AI/LLM feature or initiative, asks "is AI worth it for…", "evaluate this AI idea", "fill in the canvas", "estimate LLM costs", "which model/architecture should we use", plans a migration between AI providers (e.g. to Nebius Token Factory), or brings an AI proposal, business case or canvas to review — in any language, and even if they never say "canvas".
+description: Turn an AI idea into a decision-ready AI Product & System Canvas (Nebius Academy AI Product & System Canvas methodology) — business problem, metrics with a stop condition, value, cost structure and token economics, architecture pattern, product blueprint, model/deployment choice, MVP hypotheses H1–H4, risks, gate review, a GO / REFRAME / NO-GO verdict, plus a visual Canvas board. When the input is vague or solution-first ("an AI agent that handles everything"), it first runs a step-by-step wizard of clarifying questions per Canvas block instead of guessing. Use whenever someone wants to assess, scope, justify or pitch an AI/LLM feature or initiative, asks "is AI worth it for…", "evaluate this AI idea", "fill in the canvas", "estimate LLM costs", "which model/architecture should we use", plans a migration between AI providers (e.g. to Nebius Token Factory), or brings an AI proposal, business case or canvas to review — in any language, and even if they never say "canvas".
 ---
 
 # AI Initiative Canvas
 
-This skill applies the method of the Nebius Academy "AI Leader" course to real initiatives. The AI Leader's job is to decide **what** gets built, **why**, and whether it pays off, balancing cost, performance and risk. The output is a document plus a visual Canvas that support a decision about the next step — usually a cheap MVP experiment.
+This skill applies the AI Product & System Canvas methodology developed at Nebius Academy to real initiatives. An AI leader's job is to decide **what** gets built, **why**, and whether it pays off, balancing cost, performance and risk. The output is a document plus a visual Canvas that support a decision about the next step — usually a cheap MVP experiment.
 
 The core idea of the method is the **decision cascade**: early decisions constrain later ones, and mistakes compound. Most AI projects fail because of an inverted sequence — model and infrastructure first, and only at the end does it turn out the business problem was vague. So the skill works top-down: problem → metrics → value → economics → pattern → product → validation. For the same reason it does not build a Canvas on guesses when the user can supply facts.
 
 ## Language
 
-**English is the default for everything the skill produces**: wizard messages, the document, the visual Canvas, tables and labels. Do this even when the user writes in another language. Switch to another language only when the user explicitly asks for it (e.g. "answer in Russian", "make the document in German"); then write the whole output in that language, keeping the course's professional terms (business metrics, misroute rate, golden dataset, Shadow → Assist → Auto) in English, and set `"lang"` in the canvas JSON accordingly.
+**English is the default for everything the skill produces**: wizard messages, the document, the visual Canvas, tables and labels. Do this even when the user writes in another language. Switch to another language only when the user explicitly asks for it (e.g. "answer in Russian", "make the document in German"); then write the whole output in that language, keeping the methodology's professional terms (business metrics, misroute rate, golden dataset, Shadow → Assist → Auto) in English, and set `"lang"` in the canvas JSON accordingly.
 
 ## Step 0 — Check whether there is enough data, and pick a mode
 
@@ -39,7 +39,7 @@ If the user is not available (scheduled task, explicit "just use assumptions"), 
 
 ### 1. Layer 1 — Business foundation (WHY)
 
-Read `references/canvas_components.md` and fill in components 1–5 in the course formats.
+Read `references/canvas_components.md` and fill in components 1–5 in the methodology's formats.
 - Do not name models, vendors or infrastructure in layer 1 — otherwise a technology decision replaces the decision about the problem.
 - State the problem without assuming the answer is AI. If a rule, ordinary software or a process change solves it more cheaply, say so plainly; that is a legitimate outcome.
 - One primary financial lever. If you cannot name one, the business case is unclear.
@@ -59,7 +59,7 @@ Components 6–10 per `references/canvas_components.md`. Component 8 metrics = t
 `references/economics_and_models.md` and `references/nebius_stack.md` (prices). Estimate tokens per unit of work and **run `scripts/token_cost.py`** — manual arithmetic here is often off by an order of magnitude.
 
 Rough guides when there are no real measurements:
-- classification/extraction: system prompt 300–800 + input 100–500 tokens; output 20–200 (reasoning models such as gpt-oss spend more output tokens on reasoning — ~155 in the course);
+- classification/extraction: system prompt 300–800 + input 100–500 tokens; output 20–200 (reasoning models such as gpt-oss spend more output tokens on reasoning — often 100–200);
 - content generation: input + instructions 500–2,000; output by result length;
 - RAG: + 1,000–4,000 tokens of retrieved context per call;
 - agentic: 3–10+ calls per task with growing context; tool calls via `--tool-calls`, `--tool-cost`;
@@ -89,7 +89,7 @@ Deliver two artifacts (in Quick mode the visual Canvas is on request):
 
 **a) Document** — following `assets/canvas_template.md`. Verdict and key numbers at the top: an executive often does not read past the first screen. Full/Review — as a document that can be saved and forwarded (a document artifact if the environment supports one, otherwise a .md file).
 
-**b) Visual Canvas** — a board like the one in the course: green WHY blocks, orange WHAT blocks, blue HOW blocks; an "AI Product Blueprint / AI System Design" toggle; every block carries a status of *fact / assumption / open*. Build the JSON following `assets/example_canvas.json` (short versions of the entries, 1–3 lines per block; layer 3 = questions for engineers with status `open`) and run:
+**b) Visual Canvas** — a board in the methodology's layout: green WHY blocks, orange WHAT blocks, blue HOW blocks; an "AI Product Blueprint / AI System Design" toggle; every block carries a status of *fact / assumption / open*. Build the JSON following `assets/example_canvas.json` (short versions of the entries, 1–3 lines per block; layer 3 = questions for engineers with status `open`) and run:
 ```
 python scripts/render_canvas.py canvas.json -o canvas.html
 ```

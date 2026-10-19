@@ -19,7 +19,7 @@ AI fails economically in different ways than traditional software: new cost type
 | **Ongoing fixed** | Human review team, monitoring, iteration cadence | **Step function**: flat until a threshold, then a jump | The review team becomes the bottleneck |
 | **Ongoing variable** | Serving (API), training/fine-tuning, data labeling, tool and retrieval calls | Serving — linear in requests; training — periodic; data — grows with the KB | Mistake: treating serving as the only variable cost |
 
-Key takeaways from the course:
+Key principles of the methodology:
 - For API-based routing/classification on an open-weight model, **inference is a small share**. Illustrative support-routing case: ~$2–5 per month for 20,000 messages vs roughly $4 per message of manual handling. The real risks are integration, human-review staffing and monitoring — none of which show up on the provider's bill.
 - With custom fine-tuning, **training runs can cost ~100× more than serving**, and they repeat with data drift.
 - Unit economics must survive **peaks and heavy users**, not only the average pilot scenario.
@@ -43,7 +43,7 @@ annual_cost      = monthly_cost × 12
 ```
 The most accurate source is `usage` from real API responses; at discovery an order-of-magnitude estimate is enough. Use `scripts/token_cost.py` rather than mental arithmetic.
 
-Course example (margin comparison): 4,000 requests/day; small model $0.05 per 1,000 requests → $0.20/day; frontier $8 per 1,000 → $32/day; revenue $80/day → the small model preserves the margin.
+Illustrative margin comparison: 4,000 requests/day; small model $0.05 per 1,000 requests → $0.20/day; frontier $8 per 1,000 → $32/day; revenue $80/day → the small model preserves the margin.
 
 ## 3. Where tokens are wasted and how to cut costs
 
@@ -67,7 +67,11 @@ Principles:
 4. **Choose the smallest model that reliably solves the task.**
 5. **Route by task type, not globally**: classification/extraction/formatting → small models; open-ended reasoning and high-stakes user-facing work must "earn" the downgrade.
 
-Selection rule from Notebook A: among models that pass **all** predefined thresholds — max quality → lower unsafe rate → cheaper → faster. Alternative: drop those failing the quality threshold and take the cheapest of the rest. The highest accuracy is not the best candidate if it fails the safety/calibration guardrail.
+Selection rule — reference implementation in the methodology's companion notebooks: [Notebook A, Step 3 "Compare candidate models"](https://github.com/mnrozhkov/ai_leader/blob/main/notebooks/notebook_a.ipynb) (ranking code: [`notebook_a_selection.py`](https://github.com/mnrozhkov/ai_leader/blob/main/src/ai_leader/notebook_a_selection.py); pass thresholds: [`decision.py`](https://github.com/mnrozhkov/ai_leader/blob/main/src/ai_leader/decision.py)).
+1. **Rank** all candidates with the same prompt on a random ~30% sample of the golden set: highest primary quality metric → lower error (misroute) rate → lower cost per unit → lower latency. A model that skips more than 20–30% of rows (timeouts, rate limits) has unreliable results.
+2. **Gate**: carry forward only candidates that pass **all** predefined thresholds (H1–H4, including the safety/calibration guardrail), then run the full evaluation on the chosen one. The top-ranked model is not the winner if it fails a threshold.
+
+Alternative: drop those failing the quality threshold and take the cheapest of the rest.
 
 What failed → what to do:
 | Failure | Action |

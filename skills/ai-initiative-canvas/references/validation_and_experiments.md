@@ -18,7 +18,7 @@
 | 3. **Gradual expansion** | Is there enough evidence to expand scope or autonomy? | **Staged rollout** (by category/channel), **canary** (1–5% of traffic) |
 | 4. **Ongoing monitoring & impact** | Does it stay good and improve business results? | **Sampling** (quality drift), **feedback loops** (edits, rejections, escalations), **A/B testing** vs baseline — only after stabilization |
 
-- **Golden dataset** — a small, hand-labelled set: typical cases + edge cases + known failure modes; a repeatable baseline for comparing versions. 100 requests in the course. It must reflect the real data distribution, or you get "great on golden, poor in production".
+- **Golden dataset** — a small, hand-labelled set: typical cases + edge cases + known failure modes; a repeatable baseline for comparing versions. Typically 100–150 examples. It must reflect the real data distribution, or you get "great on golden, poor in production".
 - **LLM-as-judge** scales but inherits the judge's bias — **a signal, not a verdict**.
 - **Shadow** — the AI processes real requests, nobody sees the output. **Assist** — suggestions to humans, humans stay in control. **Auto** — no approval, only in narrow scenarios already proven reliable.
 - Boundaries: 8 — what "good enough" means; 9 — how to collect evidence; 5 — who gets access and in what order; 2 — which business outcomes must improve.
@@ -76,7 +76,7 @@ Results are non-deterministic: a 1–2 pp difference is noise, rerun; 10+ pp is 
 - Compare versions in a **controlled comparison**: same model, same data, same schema; change one factor.
 - Read deltas in order: quality → safety (does it rise together with quality?) → cost/latency (is the gain proportional?).
 - If accuracy ↑ but unsafe ↑, the prompt gives more confident but less reliable answers.
-- **The best candidate is the one that passes all predefined criteria**, not the one with the highest accuracy. Course example: the improved prompt (94%, unsafe 3%) beats few-shot (91%, unsafe 7–8%). Combining both is a new version that needs its own evidence.
+- **The best candidate is the one that passes all predefined criteria**, not the one with the highest accuracy. Typical pattern: a better-specified prompt that passes all thresholds beats a few-shot variant with higher accuracy but worse calibration. Combining both is a new version that needs its own evidence.
 - A failed baseline is no reason to stop. **Hard stop** only on a structural problem: the task is too ambiguous, the data too noisy, or the model doesn't follow the schema at all.
 - Passing H1–H4 ≠ production readiness and ≠ a proven business case. It is the basis for moving to a **controlled pilot**.
 
@@ -89,6 +89,6 @@ Results are non-deterministic: a 1–2 pp difference is noise, rerun; 10+ pp is 
 | Key distinctions (edge-case rules) | Targets pairs from the confusion matrix | — |
 | Confidence definitions (calibration) | Makes the guardrail meaningful | — |
 | Structured output / JSON mode | Reliable format for pipelines | — |
-| Few-shot | Accuracy gain (jump at n=8 in the course) | Cost and latency grow linearly; may hurt calibration |
+| Few-shot | Accuracy gain (often plateaus after a handful of examples) | Cost and latency grow linearly; may hurt calibration |
 | Grounding + escalation instruction | Against bluffing and over-promising | Needs a source |
 | Low temperature | Comparable experiments | — |

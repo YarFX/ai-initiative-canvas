@@ -1,6 +1,6 @@
 # AI Product & System Canvas — components 1–10
 
-Method from the Nebius Academy "AI Leader" course (Canvas author: Mikhail Rozhkov, inspired by Osterwalder's Business Model Canvas).
+Methodology developed at Nebius Academy (Canvas author: Mikhail Rozhkov, inspired by Osterwalder's Business Model Canvas).
 15 components in 3 layers; the skill fills layers 1–2 and lists only open questions for layer 3.
 
 | Layer | Question | Components |

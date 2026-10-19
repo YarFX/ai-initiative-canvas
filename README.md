@@ -1,11 +1,11 @@
 # AI Initiative Canvas — a Claude skill
 
-A Claude skill that turns an AI idea into a decision-ready **AI Product & System Canvas**, following the method taught in the Nebius Academy *AI Leader* course.
+A Claude skill that turns an AI idea into a decision-ready **AI Product & System Canvas**, following the AI Product & System Canvas methodology developed at Nebius Academy.
 
 Give it an idea ("our CTO wants an AI agent for the IT helpdesk"), a migration question ("should we move from GPT-4o to Nebius Token Factory?") or someone else's pitch, and it produces:
 
 - a **document**: verdict (GO → MVP experiment / REFRAME / NO-GO), Canvas components 1–10, architecture pattern, inference economics, model and deployment choice, MVP hypotheses H1–H4, risks and compliance, gate review, and questions for engineers;
-- a **visual Canvas board** (HTML) in the course layout — WHY / WHAT / HOW blocks with a *fact / assumption / open* status on each.
+- a **visual Canvas board** (HTML) in the methodology's layout — WHY / WHAT / HOW blocks with a *fact / assumption / open* status on each.
 
 ![Example Canvas board — HR screening bot](examples/hr-screening-bot/canvas.png)
 
@@ -18,7 +18,7 @@ Give it an idea ("our CTO wants an AI agent for the IT helpdesk"), a migration q
 | **Quick** | "Ballpark it" | Problem, metrics, cost, pattern, inference estimate, H1–H4, verdict |
 | **Review** | You bring a proposal or pitch | Quote → why it's a problem → corrected wording, then a verdict |
 
-Built-in rules from the course: decision cascade (problem before model), one primary financial lever, a mandatory stop condition, business metrics kept apart from AI metrics, simplest-pattern-that-fits, smallest model that reliably solves the task, Shadow → Assist → Auto, thresholds set before results, no false precision.
+Built-in rules from the methodology: decision cascade (problem before model), one primary financial lever, a mandatory stop condition, business metrics kept apart from AI metrics, simplest-pattern-that-fits, smallest model that reliably solves the task, Shadow → Assist → Auto, thresholds set before results, no false precision.
 
 **Language:** English by default for everything it produces; it switches to another language only when asked explicitly.
 
@@ -65,4 +65,4 @@ python skills/ai-initiative-canvas/scripts/render_canvas.py skills/ai-initiative
 ## Notes
 
 - Model prices in `nebius_stack.md` and the script presets are list prices as of October 2026 — verify them before relying on a calculation.
-- The method follows the AI Product & System Canvas taught in the Nebius Academy *AI Leader* course (Canvas by Mikhail Rozhkov). All examples in this repository are fictional or the author's own projects; this is an independent study project, not affiliated with or endorsed by Nebius.
+- The skill follows the AI Product & System Canvas methodology developed at Nebius Academy (Canvas by Mikhail Rozhkov). The evaluation workflow it recommends (golden dataset, H1–H4 thresholds, model comparison) mirrors the methodology's companion notebooks: [mnrozhkov/ai_leader](https://github.com/mnrozhkov/ai_leader). All examples in this repository are fictional or the author's own projects; this is an independent study project, not affiliated with or endorsed by Nebius.

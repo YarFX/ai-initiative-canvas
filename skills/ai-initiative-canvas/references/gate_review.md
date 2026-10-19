@@ -20,7 +20,7 @@ Use the same list in **Review** mode, when the user brings someone else's canvas
 - [ ] Every component-8 metric has a threshold (or is explicitly marked directional for the pilot).
 - [ ] Stop/Rollback in component 9.
 
-## C. Common traps (course distractors)
+## C. Common traps
 - [ ] "Benchmarks confirm quality" → benchmarks only give a shortlist; validation happens on your own data.
 - [ ] "Accuracy gives the full picture" → system metrics are needed too (latency, reliability, cost).
 - [ ] "A newer/bigger model is better" → smallest model that reliably solves the task; predictable beats impressive.

@@ -47,7 +47,7 @@ Next step: N+1 · <Name> — <why, in one sentence>.
 ```
 
 After the user replies — in **one** message:
-1. "Recorded in the Canvas (block N):" — the final entry for the block in the course format, 1–3 sentences, assumptions marked `[assumption]`;
+1. "Recorded in the Canvas (block N):" — the final entry for the block in the methodology's format, 1–3 sentences, assumptions marked `[assumption]`;
 2. if the user's numbers contradict each other (e.g. volume × time per unit exceeds the team's available hours), name the discrepancy and base the next thresholds on a consistent picture (usually the conservative one), not on one of the conflicting numbers; when in doubt, add a clarifying question to the next step;
 3. if the answer contradicts the method (e.g. an AI metric among business metrics, auto mode from day one), say so briefly and propose a fix without overriding the user's choice;
 4. the next step straight away, in the format above.
