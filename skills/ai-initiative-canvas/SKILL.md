@@ -102,7 +102,7 @@ Block status tells the reader what an entry rests on: **fact** — the block's k
 - **Length.** The reader is a busy executive. Aim for 2,000–3,000 words in Full mode and under 800 in Quick mode. Each Canvas entry is 1–3 sentences; give reasoning only where a decision is not obvious. State numbers once (in "Key numbers" or the economics table) and refer to them afterwards. A longer document does not look more thorough — it just doesn't get read.
 - **Consistent numbers.** Before delivering, check that every repeated number (tokens, $/month, volumes) matches across the document and the board and derives from the same assumptions and `token_cost.py` output.
 - Layer 3 (HOW) holds only questions for engineers, not decisions.
-- For the expected level of detail see `references/example_candlekeep.md`; do not copy its conclusions.
+- For the expected level of detail see `references/example_support_triage.md`; do not copy its conclusions.
 
 ## Reference files
 
@@ -116,7 +116,7 @@ Block status tells the reader what an entry rests on: **fact** — the block's k
 | `references/validation_and_experiments.md` | Component 9, MVP H1–H4, metrics, decisions |
 | `references/risk_compliance.md` | Risks and compliance |
 | `references/gate_review.md` | Gate review and Review mode |
-| `references/example_candlekeep.md` | A filled-in Canvas and MVP experiment |
+| `references/example_support_triage.md` | An illustrative filled-in Canvas and MVP experiment |
 | `scripts/token_cost.py` | Inference cost calculation — `--help` |
 | `scripts/render_canvas.py` | Visual Canvas from JSON |
 | `assets/canvas_template.md` | Document structure |

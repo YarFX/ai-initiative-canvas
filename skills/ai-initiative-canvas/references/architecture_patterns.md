@@ -40,7 +40,7 @@ A pattern describes **how AI is used in the product**, without choosing a model 
 | Release notes from a list of PRs in the company's tone, no extra lookup | 2 — Content generation |
 | "Where is my order?": check status, update the ticket, sometimes trigger a reshipment | 4 — Agentic |
 | IT helpdesk: identify request type + answer from current internal procedures | 5 — Composition: structured output + grounded generation |
-| Support triage + reply draft, sometimes based on the returns policy (Candlekeep) | 5 — Composition: structured + content generation + RAG (RAG only when the policy is needed) |
+| Support triage + reply draft, sometimes based on the returns policy | 5 — Composition: structured + content generation + RAG (RAG only when the policy is needed) |
 
 ## Case studies for arguments
 

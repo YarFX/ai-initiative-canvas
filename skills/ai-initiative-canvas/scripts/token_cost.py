@@ -7,7 +7,7 @@ comparison against the current (non-AI) unit cost of the process.
 
 Examples
 --------
-# Candlekeep-like routing: 20K msgs/month, measured tokens, two models + frontier bar
+# Support-routing example: 20K msgs/month, measured tokens, two models + frontier bar
 python token_cost.py --requests 20000 --in-tokens 174 --out-tokens 155 \
     --preset gpt-oss-120b --preset nemotron-lightning --preset frontier \
     --baseline-unit-cost 4.10

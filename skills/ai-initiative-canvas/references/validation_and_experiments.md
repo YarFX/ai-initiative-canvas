@@ -25,11 +25,11 @@
 
 ## 2. MVP experiment: H1–H4
 
-A product definition is a set of assumptions. Before a live pilot, prove that the **core AI capability** works offline. Don't validate everything at once: an impressive prototype is a bad experiment (when it fails you can't tell where it broke). Pick **one small but meaningful capability** — usually the riskiest one, or the one everything else depends on (for Candlekeep: routing with a confidence level, without drafting or RAG).
+A product definition is a set of assumptions. Before a live pilot, prove that the **core AI capability** works offline. Don't validate everything at once: an impressive prototype is a bad experiment (when it fails you can't tell where it broke). Pick **one small but meaningful capability** — usually the riskiest one, or the one everything else depends on (e.g. for support triage: routing with a confidence level, without drafting or RAG).
 
 Hypothesis template (thresholds set **before** results → a decision rule):
 
-| Component | Hypothesis | Metric | Threshold (Candlekeep, for reference) |
+| Component | Hypothesis | Metric | Threshold (illustrative support-routing example) |
 |---|---|---|---|
 | 8 | **H1 — Quality** | The pattern's primary quality metric (accuracy, groundedness, task success…) | dept. accuracy ≥85% |
 | 9 | **H2 — Safety / guardrail** | Unsafe auto-action rate = share of high-confidence answers that are wrong | ≤3% |

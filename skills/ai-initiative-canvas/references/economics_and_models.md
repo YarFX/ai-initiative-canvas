@@ -20,7 +20,7 @@ AI fails economically in different ways than traditional software: new cost type
 | **Ongoing variable** | Serving (API), training/fine-tuning, data labeling, tool and retrieval calls | Serving — linear in requests; training — periodic; data — grows with the KB | Mistake: treating serving as the only variable cost |
 
 Key takeaways from the course:
-- For API-based routing/classification on an open-weight model, **inference is a small share**. Candlekeep: ~$2–5 per month for 20,000 messages vs a current $4.10 per message. The real risks are integration, human-review staffing and monitoring — none of which show up on the provider's bill.
+- For API-based routing/classification on an open-weight model, **inference is a small share**. Illustrative support-routing case: ~$2–5 per month for 20,000 messages vs roughly $4 per message of manual handling. The real risks are integration, human-review staffing and monitoring — none of which show up on the provider's bill.
 - With custom fine-tuning, **training runs can cost ~100× more than serving**, and they repeat with data drift.
 - Unit economics must survive **peaks and heavy users**, not only the average pilot scenario.
 - The best cost-structure entry: the full cost structure + a measurable unit-cost guardrail + a breakpoint tied to a change in economics + a realistic ROI **range**. Exact sums without data are false precision.

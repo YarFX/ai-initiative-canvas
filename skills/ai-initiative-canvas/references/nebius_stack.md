@@ -35,7 +35,7 @@ Nebius's phrasing: "Token Factory helps agents reason, while Tavily helps them k
 | NVIDIA Nemotron-3.5-Lightning | Token Factory | 0.06 | 0.24 | Ultra-cheap tier for simple tasks |
 | Frontier proprietary (course examples: GPT-6 Astra, Claude Fable 5.1) | First-party API | ~10 | ~50 | Quality bar; expensive for high-volume routine work |
 
-Measured example (Candlekeep, gpt-oss-120b): ~174 input + ~155 output tokens per message → ~$0.00012 per message → ~$2.4/month for 20,000 messages.
+Illustrative measurement (support routing, gpt-oss-120b): ~174 input + ~155 output tokens per message → ~$0.00012 per message → ~$2.4/month for 20,000 messages.
 
 ## Tavily — prices
 1,000 free credits/month; pay-as-you-go **$0.008 per credit**. Search basic/fast = 1 credit, advanced = 2 credits. Endpoints: Search, Extract (up to 20 URLs), Map, Crawl, Research (multi-step report with citations). Connects to Token Factory via function calling or the Tavily MCP server.

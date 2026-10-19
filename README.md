@@ -7,7 +7,7 @@ Give it an idea ("our CTO wants an AI agent for the IT helpdesk"), a migration q
 - a **document**: verdict (GO → MVP experiment / REFRAME / NO-GO), Canvas components 1–10, architecture pattern, inference economics, model and deployment choice, MVP hypotheses H1–H4, risks and compliance, gate review, and questions for engineers;
 - a **visual Canvas board** (HTML) in the course layout — WHY / WHAT / HOW blocks with a *fact / assumption / open* status on each.
 
-![Example Canvas board](examples/candlekeep-canvas.png)
+![Example Canvas board](examples/support-triage-canvas.png)
 
 ## How it works
 
@@ -36,7 +36,7 @@ skills/ai-initiative-canvas/
 │   ├── risk_compliance.md           # safety / security / GDPR / EU AI Act
 │   ├── nebius_stack.md              # Token Factory, Serverless, AI Cloud, Tavily (prices as of Oct 2026)
 │   ├── gate_review.md               # pre-delivery checklist and verdict rules
-│   └── example_candlekeep.md        # the course's reference case
+│   └── example_support_triage.md    # an illustrative (fictional) filled-in case
 ├── scripts/
 │   ├── token_cost.py                # inference cost per unit / month / year / peak, multi-model
 │   └── render_canvas.py             # canvas.json → self-contained canvas.html
@@ -62,4 +62,4 @@ python skills/ai-initiative-canvas/scripts/render_canvas.py skills/ai-initiative
 ## Notes
 
 - Model prices in `nebius_stack.md` and the script presets are list prices as of October 2026 — verify them before relying on a calculation.
-- The method and the Candlekeep case come from the Nebius Academy *AI Leader* course (Canvas by Mikhail Rozhkov); this repository is an independent study project and is not affiliated with or endorsed by Nebius.
+- The method follows the AI Product & System Canvas taught in the Nebius Academy *AI Leader* course (Canvas by Mikhail Rozhkov). All examples in this repository are fictional or the author's own projects; this is an independent study project, not affiliated with or endorsed by Nebius.
